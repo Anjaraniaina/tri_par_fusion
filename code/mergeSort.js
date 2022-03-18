@@ -1,23 +1,26 @@
-//'use strict'
-//first attempt
-
-let table = [2,5,1,9,0,3];
+// This is the main function
 function mergeSort(an_array){ 
-    if(an_array.length <= 1){
-        return an_array;
+    if(an_array.length <= 1){       // return an array of length == 1 
+         return an_array;
     }
+
+    // Divide an_array into two new array 
     let array_right = an_array.splice(an_array.length/2);
     let array_left = an_array.splice(0, an_array.length/2);
     
+    // Merge two array
     return merge(
         mergeSort(array_left), mergeSort(array_right)
     )
 }
 
+//  Sort arrays 
 let merge = function (array_left, array_right) {
-    let resultArray = [], leftIndex = 0, rightIndex = 0;
+    let resultArray = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
   
-    // kind of an arrayPrototype.sort(a,b => a - b)
+    // To get a sorted array
     while (leftIndex < array_left.length && rightIndex < array_right.length) {
       if (array_left[leftIndex] < array_right[rightIndex]) {
         resultArray.push(array_left[leftIndex]);
